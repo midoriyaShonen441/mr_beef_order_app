@@ -1,0 +1,53 @@
+version: '3.7'
+
+networks:
+  net:
+    external: true
+    driver: bridge
+
+volumes:
+  database:
+    external: true
+
+
+services:
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./01_frontend
+
+  backend:
+    container_name: backend
+    restart: always
+    build:
+      context: ./02_backend
+    volumes:
+      - ./02_backend:/usr/src/app:cached
+    ports:
+      - 8888:8888
+    networks:
+      - net 
+
+  database:
+    container_name: database
+    restart: always
+    image: mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: mr_beef_order
+    volumes:
+      - database:/var/lib/mysql
+    ports:
+      - 3306:3306
+    networks:
+      - net
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - net
+    
