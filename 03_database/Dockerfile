@@ -8,4 +8,4 @@ WORKDIR /var/lib/mysql/initialCommand
 
 COPY ./SQL .
 
-# RUN mariadb --user=root --password=root 
+RUN mariadb --user=root --password=root --database=mr_beef_stock < ./01_create_table.sql 
