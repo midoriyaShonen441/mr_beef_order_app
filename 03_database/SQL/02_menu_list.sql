@@ -1,13 +1,13 @@
 CREATE TABLE menu_list (
     menu_id INT AUTO_INCREMENT NOT NULL,
-    type VARCHAR(30),
-    name VARCHAR(30),
-    detail VARCHAR(30),
-    units VARCHAR(30),
+    type TEXT(50),
+    name TEXT(50),
+    detail TEXT(50),
+    units TEXT(50),
     PRIMARY KEY(menu_id)
-)
+);
 
-INSERT INTO menu_list VALUES (
+INSERT INTO menu_list VALUES
     (1, "เนื้อ", "เนื้อคารูบิ", NULL, "จาน"),
     (2, "เนื้อ", "เนื้อฮารามิ", NULL, "จาน"),
     (3, "เนื้อ", "เนื้อวากิว-A3", NULL, "จาน"),
@@ -18,5 +18,4 @@ INSERT INTO menu_list VALUES (
     (8, "ทะเล", "กุ้งไข่", NULL, "จาน"),
     (9, "ทะเล", "หอยเชลล์", NULL, "จาน"),
     (10, "ทะเล", "หอยแมลงภู่ชิลี", NULL, "จาน"),
-    (11, "ทะเล", "ปลาแซลม่อล", NULL, "จาน"),
-)
+    (11, "ทะเล", "ปลาแซลม่อล", NULL, "จาน");

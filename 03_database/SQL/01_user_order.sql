@@ -3,6 +3,5 @@ CREATE TABLE user_order (
     table_no INT NOT NULL,
     menu_id INT NOT NULL,
     qty INT,
-    status VARCHAR(30),
-    PRIMARY KEY (order_id)
+    status VARCHAR(30)
 )
