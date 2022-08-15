@@ -22,33 +22,33 @@ app.get("/", async (req, res) => {
 
 //===================  send Menu  ==========================//
 app.post("/sendMenu", async (req, res) => {
+  /*
+    {
+    "table_no": 1,
+    "order": [
+        { 
+            "menu_id": 1,
+            "qty": 1
+        }
+    ]
+}
+  */
+
   const payload = req.body;
   const orderTime = moment().utcOffset("+07:00").format();
-  await pool.getConnection().then(console.log("connected"));
-  /*
-        {
-            tableNum: tableNum,
-            karubi: Number,
-            harami: Number,
-            wagyu: Number,
-            ribeye: Number,
-            brisket: Number,
-            tongue: Number,
-            kurobuta: Number,
-            shrimp: Number,
-            shell: Number,
-            mussels: Number,
-            salmon: Number,
-        }
-    */
+  const conn = await pool.getConnection();
 
-    try {
-      console.log("connected ! connection id is " + conn.threadId);
-      await conn.release(); //release to pool
-      res.send("OK");
-    } catch (err) {
-      console.log("not connected due to error: " + err);
-    }
+  try {
+    console.log("connected ! connection id is " + conn.threadId);
+    conn.query(
+      
+    )
+    res.send("OK");
+  } catch (err) {
+    console.log("not connected due to error: " + err);
+  } finally {
+    await conn.release();
+  }
 });
 
 module.exports = app;
